@@ -2,11 +2,12 @@ import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import React from "react";
-import Router from "next/router";
+import { useRouter } from "next/navigation"
 
 function WorkspaceHeader({ fileName }) {
+  const router = useRouter()
   const handleBackClick = () => {
-    Router.push('/dashboard');
+    router.push('/dashboard');
   };
 
   return (

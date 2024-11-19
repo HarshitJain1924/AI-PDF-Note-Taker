@@ -1,7 +1,7 @@
 import { api } from "@/convex/_generated/api";
 import { chatSession, ChatSession } from "@/configs/AIModel";
 import { useAction, useMutation } from "convex/react";
-import { Bold, Code, Highlighter, Italic, Save, Sparkles, Strikethrough, Underline } from "lucide-react";
+import { Bold, Code, Highlighter, Italic, Save, Sparkles, Strikethrough, ToggleLeft, Underline } from "lucide-react";
 import { useParams } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
@@ -119,7 +119,7 @@ function EditorExtension({ editor }) {
             </button>
             <button
               onClick={() => onSave()}
-              className={"hover:text-blue-800"}
+              className={"hover:text-red-800"}
             >
               <Save />
             </button>
