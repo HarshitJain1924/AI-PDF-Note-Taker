@@ -15,7 +15,7 @@ export const ingest = action({
       args.slitText, //array
       args.fileId, //string
       new GoogleGenerativeAIEmbeddings({
-        apiKey: "AIzaSyBzqAg5OIGAzRnLblMIvrtFWiBJSjc4sNk",
+        apiKey: process.env.GEMINI_API_KEY,
         model: "text-embedding-004", // 768 dimensions
         taskType: TaskType.RETRIEVAL_DOCUMENT,
         title: "Document title",
@@ -34,7 +34,7 @@ export const search = action({
   handler: async (ctx, args) => {
     const vectorStore = new ConvexVectorStore(
       new GoogleGenerativeAIEmbeddings({
-        apiKey: "AIzaSyBzqAg5OIGAzRnLblMIvrtFWiBJSjc4sNk", // Your API key
+        apiKey: process.env.GEMINI_API_KEY,
         model: "text-embedding-004",
         taskType: TaskType.RETRIEVAL_DOCUMENT,
         title: "Document title",
