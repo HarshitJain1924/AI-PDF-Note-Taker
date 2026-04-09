@@ -1,0 +1,196 @@
+AI PDF Note Taker - Interview Questions and Answers
+
+1. What problem does this project solve?
+Answer: It helps users upload PDFs, ask questions from them, and generate notes without manually reading the full document.
+
+2. What is the main value of the app?
+Answer: It saves time by turning long PDFs into searchable, AI-assisted knowledge.
+
+3. Who is the target user?
+Answer: Students, researchers, and professionals who work with long documents.
+
+4. What are the core features?
+Answer: PDF upload, PDF viewing, document Q&A, AI note generation, real-time saving, and authenticated workspace access.
+
+5. What is the main architecture of the app?
+Answer: Next.js frontend, Convex backend/database, Google Gemini for AI, LangChain for embeddings and retrieval, and Clerk for authentication.
+
+6. Why did you choose Next.js?
+Answer: It gives routing, server/client rendering support, performance optimizations, and a production-ready React framework.
+
+7. Why did you choose Convex?
+Answer: Convex gives a simple serverless backend, database, and real-time data handling without managing infrastructure.
+
+8. Why did you choose Clerk?
+Answer: Clerk simplifies authentication and user session management.
+
+9. Why did you choose Gemini?
+Answer: It provides strong generative AI capabilities for document Q&A and note assistance.
+
+10. Why did you use LangChain?
+Answer: LangChain helps with embedding generation, similarity search, and RAG workflow integration.
+
+11. What is RAG?
+Answer: Retrieval-Augmented Generation is a method where the app retrieves relevant document chunks before sending them to the AI model.
+
+12. Why use RAG instead of sending the whole PDF to the model?
+Answer: It improves accuracy, reduces token usage, and keeps responses grounded in the uploaded content.
+
+13. What happens when a user uploads a PDF?
+Answer: The app extracts text, splits it into chunks, creates embeddings, stores them in Convex, and makes them searchable.
+
+14. Why do you chunk the PDF text?
+Answer: Chunking makes retrieval more precise and avoids overloading the model with too much text at once.
+
+15. What are embeddings?
+Answer: Embeddings are numeric vector representations of text used to compare semantic similarity.
+
+16. Why use a vector database?
+Answer: It allows fast semantic search across document chunks based on meaning rather than exact keywords.
+
+17. What is similarity search?
+Answer: It finds the most relevant chunks by comparing query embeddings with stored document embeddings.
+
+18. What is stored in the documents table?
+Answer: The chunk text, its embedding vector, and metadata.
+
+19. Why do you need the schema vector dimension to match the embedding model?
+Answer: The vector index only accepts embeddings of the exact configured length, so mismatched dimensions cause errors.
+
+20. Why did you have to update the schema from 768 to 3072?
+Answer: The new Gemini embedding model produced vectors with 3072 dimensions instead of 768.
+
+21. Why did you need to re-upload old PDFs after changing the embedding model?
+Answer: Old embeddings were created with a different vector size and cannot be mixed in the same index.
+
+22. What is the purpose of the notes feature?
+Answer: It allows users to save useful takeaways and edit them while reading the PDF.
+
+23. Why is note-taking integrated into the workspace?
+Answer: It keeps reading, searching, and writing in one place, which improves user flow.
+
+24. How are notes saved?
+Answer: Notes are stored in Convex and associated with the correct file and user.
+
+25. Why did you use a rich text editor?
+Answer: It gives a better note-taking experience than a plain textarea.
+
+26. Why did you use Tiptap?
+Answer: Tiptap is flexible, extensible, and good for structured note editing.
+
+27. Why did you use Tailwind CSS?
+Answer: It makes styling fast, consistent, and easy to maintain.
+
+28. Why did you use shadcn/ui components?
+Answer: They provide polished UI primitives that are easy to customize.
+
+29. How is the dashboard structured?
+Answer: It lists user-uploaded PDFs and gives access to each workspace.
+
+30. Why did you make the home page a client component?
+Answer: It needs user session state and client-side navigation.
+
+31. Why did you use useUser from Clerk?
+Answer: It gives access to authentication state and user information in the frontend.
+
+32. Why does the app create a user record after sign-in?
+Answer: It ensures the backend has a corresponding record for file ownership and app logic.
+
+33. How do you protect user data?
+Answer: Authentication is required, and backend queries should scope data by the signed-in user.
+
+34. What is the purpose of the pdfFiles table?
+Answer: It stores uploaded PDF metadata such as file ID, storage ID, file name, URL, and owner.
+
+35. What is the purpose of the users table?
+Answer: It stores authenticated user details for app-specific access and personalization.
+
+36. What is the purpose of the documents table?
+Answer: It stores PDF text chunks and their embeddings for semantic search.
+
+37. What is the purpose of the search action?
+Answer: It converts the user query into an embedding and finds the most relevant document chunks.
+
+38. What is the purpose of the ingest action?
+Answer: It generates embeddings for uploaded PDF chunks and stores them in Convex.
+
+39. Why do you use actions in Convex?
+Answer: Actions are useful for async external work such as AI calls and embedding generation.
+
+40. What is the difference between an action and a mutation in Convex?
+Answer: A mutation updates database state directly, while an action is used for external or long-running logic.
+
+41. Why did you use GoogleGenerativeAIEmbeddings?
+Answer: It generates vector embeddings for similarity search.
+
+42. Why did you use GoogleGenerativeAI in the chat model file?
+Answer: It powers the conversational Gemini model used for AI responses.
+
+43. What is the difference between embeddings and chat generation?
+Answer: Embeddings are for retrieval and search, while chat generation creates natural language answers.
+
+44. What model does the chat session use?
+Answer: It uses gemini-2.5-flash.
+
+45. How did you decide which model to use for embeddings?
+Answer: I used the current supported Gemini embedding model compatible with LangChain and Convex vector search.
+
+46. What caused the deployment issues you faced?
+Answer: Vercel blocked vulnerable Next.js versions, so the project needed security-related dependency updates.
+
+47. How did you handle versioning issues with AI models?
+Answer: I updated the model configuration and schema to match the current API and vector dimension requirements.
+
+48. What happens if the embedding dimensions do not match the schema?
+Answer: Convex rejects the vector write because the vector length is invalid for the index.
+
+49. How would you explain the app to a non-technical person?
+Answer: It is a smart PDF assistant that can read your documents, answer questions, and save notes.
+
+50. What is the hardest part of this project?
+Answer: Handling the full RAG pipeline correctly, especially embeddings, vector search, and model version compatibility.
+
+51. What did you learn from this project?
+Answer: I learned how to connect a modern frontend with AI, vector search, authentication, and real-time backend tools.
+
+52. How would you improve the app next?
+Answer: I would add multi-PDF chat, better summarization, voice input, and collaboration features.
+
+53. How would you make the app more scalable?
+Answer: I would add better caching, background processing, monitoring, and more efficient chunking and retrieval.
+
+54. How would you handle scanned PDFs?
+Answer: I would add OCR support because scanned documents do not always produce clean extracted text.
+
+55. How would you reduce hallucinations?
+Answer: I would keep responses grounded in retrieved chunks, limit context to relevant text, and instruct the model to answer only from the PDF.
+
+56. How would you test this project?
+Answer: I would test upload flow, embedding generation, retrieval accuracy, note saving, authentication, and failure cases.
+
+57. What would you do if a user asks a question not found in the PDF?
+Answer: I would return a clear fallback response saying the answer is not available in the uploaded document.
+
+58. How do you manage environment variables?
+Answer: Sensitive keys stay in environment files and are only exposed to the browser if they are explicitly meant to be public.
+
+59. Why is the workspace route dynamic?
+Answer: Each uploaded PDF gets its own workspace so notes and AI search are tied to that file.
+
+60. What is the most important design decision in this project?
+Answer: Using a RAG-based architecture so the AI answers are based on the uploaded document instead of general model knowledge.
+
+61. What would an interviewer likely ask about deployment?
+Answer: They may ask how the project is hosted, how Convex deploys during build, and how dependency security issues were fixed.
+
+62. What would an interviewer likely ask about security?
+Answer: They may ask how user data is isolated, how API keys are protected, and how uploads are validated.
+
+63. What would an interviewer likely ask about performance?
+Answer: They may ask about chunking strategy, retrieval latency, bundle size, and AI response time.
+
+64. What would an interviewer likely ask about your contribution?
+Answer: They may ask which parts you built yourself, what problems you solved, and how you handled debugging.
+
+65. What is the biggest engineering lesson from this project?
+Answer: AI apps depend heavily on external versions and schemas, so correctness, compatibility, and validation matter as much as UI.

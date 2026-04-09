@@ -47,8 +47,8 @@ export default function Home() {
       <header className="px-4 lg:px-6 h-16 flex items-center">
         <Link className="flex items-center justify-center" href="#">
           <div className="flex gap-2 items-center">
-            <div className="h-8 w-8 bg-primary rounded-full" />
-            <span className="font-bold text-lg">PDFMaster AI</span>
+            <div className="h-8 w-8 bg-primary rounded-full flex items-center justify-center text-white text-xs font-bold">AI</div>
+            <span className="font-bold text-lg">AI PDF Note Taker</span>
           </div>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
@@ -92,8 +92,7 @@ export default function Home() {
                     with AI-Powered Magic
                   </h1>
                   <p className="mx-auto lg:mx-0 max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                    Elevate your note-taking experience with our AI-powered PDF app. Seamlessly extract key insights,
-                    summaries, and annotations from any PDF with just a few clicks.
+                    Elevate your note-taking with AI PDF Note Taker. Seamlessly extract insights, generate summaries, and annotate PDFs with ease.
                   </p>
                 </div>
                 <div className="space-x-4">
@@ -179,7 +178,7 @@ export default function Home() {
                 {
                   name: "Alex Johnson",
                   role: "Student",
-                  quote: "PDFMaster AI has revolutionized my study habits. I can now breeze through research papers in record time!",
+                  quote: "AI PDF Note Taker has revolutionized my study habits. I can now breeze through research papers in record time!",
                   image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
                 },
                 {
@@ -224,7 +223,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { q: "How accurate are the AI-generated summaries?", a: "Our AI model has been trained on a vast corpus of academic and professional documents, achieving over 95% accuracy in summary generation." },
-                { q: "Can I use PDFMaster AI offline?", a: "While the AI features require an internet connection, you can access and read your saved notes and PDFs offline." },
+                { q: "Can I use AI PDF Note Taker offline?", a: "While the AI features require an internet connection, you can access and read your saved notes and PDFs offline." },
                 { q: "Is my data secure?", a: "Absolutely. We use end-to-end encryption and never store your original PDFs on our servers. Your privacy and data security are our top priorities." },
                 { q: "How many PDFs can I process per month?", a: "Our basic plan allows for 50 PDFs per month. For unlimited PDF processing, check out our premium plans." },
               ].map((item, index) => (
@@ -250,7 +249,7 @@ export default function Home() {
           </div>
           <div className="container px-4 md:px-6 text-center relative z-10">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your PDF Experience?</h2>
-            <p className="mb-8 text-lg">Join thousands of satisfied users and start your journey with PDFMaster AI today.</p>
+            <p className="mb-8 text-lg">Join thousands of satisfied users and start taking smarter notes with AI PDF Note Taker today.</p>
             <Button onClick={handleGetStarted} className="bg-white text-primary rounded-full px-8 hover:bg-gray-100">
               Get Started Now
             </Button>
@@ -260,8 +259,8 @@ export default function Home() {
       <footer className="w-full py-6 bg-gray-800 text-white">
         <div className="container px-4 md:px-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <span className="font-bold text-lg">PDFMaster AI</span>
-            <p className="text-sm">© 2024 PDFMaster AI. All rights reserved.</p>
+            <span className="font-bold text-lg">AI PDF Note Taker</span>
+            <p className="text-sm">© 2026 AI PDF Note Taker. All rights reserved.</p>
           </div>
           <nav className="flex gap-4">
             <Link className="text-sm hover:underline" href="#">

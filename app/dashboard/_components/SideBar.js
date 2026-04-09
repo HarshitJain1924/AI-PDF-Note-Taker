@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Layout, Shield } from "lucide-react";
+import { Layout } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import UploadPdfDialog from "./UploadPdfDialog";
 import { useUser } from "@clerk/nextjs";
@@ -16,8 +16,13 @@ function SideBar() {
   });
   return (
     <div className="shadow-md h-screen p-7">
-      <Image src={"/logo.svg"} alt="logo" width="120" height="120" />
-      <div className="mt-10 ">
+      <div className="flex gap-2 items-center mb-6">
+        <div className="h-10 w-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">AI</div>
+        <div className="flex flex-col">
+          <span className="font-bold text-lg">AI PDF</span>
+          <span className="font-bold text-lg">Note Taker</span>
+        </div>
+      </div>
         <UploadPdfDialog isMaxFile={fileList?.length>=5?true:false}>
           <Button className="w-full">+ Upload PDF</Button>
         </UploadPdfDialog>
@@ -25,15 +30,10 @@ function SideBar() {
           <Layout />
           <h2>Workspace</h2>
         </div>
-        <div className="flex gap-2 p-3 mt-1 hover:bg-slate-300 rounded-lg cursor-pointer">
-          <Shield />
-          <h2>Upgrade</h2>
-        </div>
       </div>
       <div className="absolute bottom-24 w-[80%]">
         <Progress value={(fileList?.length/5)*100} />
         <p className="text-sm mt-2">{fileList?.length} out of 5 PDF Uploaded</p>
-        <p className="text-sm text-gray-400 mt-2">Upgrade to Upload more PDF</p>
       </div>
     </div>
   );

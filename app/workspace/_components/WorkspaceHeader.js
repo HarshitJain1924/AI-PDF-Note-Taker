@@ -12,7 +12,10 @@ function WorkspaceHeader({ fileName }) {
 
   return (
     <div className="p-4 flex justify-between items-center shadow-md">
-      <Image src={"/logo.svg"} alt="Logo" width={140} height={100} />
+      <div className="flex gap-2 items-center">
+        <div className="h-10 w-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">AI</div>
+        <span className="font-bold text-lg">AI PDF Note Taker</span>
+      </div>
       <h2 className="font-bold text-xl">{fileName}</h2>
       <div className="flex gap-2 items-center">
         <Button onClick={handleBackClick}>Back</Button>
