@@ -8,7 +8,7 @@ import { useQuery } from "convex/react";
 import Highlight from "@tiptap/extension-highlight";
 import Underline from "@tiptap/extension-underline";
 
-function TextEditor({fileId}) {
+function TextEditor({ fileId, fileName }) {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -35,7 +35,7 @@ function TextEditor({fileId}) {
   }, [Notes&&editor]);
   return (
     <div>
-      <EditorExtension editor={editor} />
+      <EditorExtension editor={editor} fileName={fileName} />
       <div className="overflow-scroll h-[88vh]">
         <EditorContent editor={editor} />
       </div>

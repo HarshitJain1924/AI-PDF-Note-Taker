@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { Layout } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import UploadPdfDialog from "./UploadPdfDialog";
@@ -30,7 +29,6 @@ function SideBar() {
           <Layout />
           <h2>Workspace</h2>
         </div>
-      </div>
       <div className="absolute bottom-24 w-[80%]">
         <Progress value={(fileList?.length/5)*100} />
         <p className="text-sm mt-2">{fileList?.length} out of 5 PDF Uploaded</p>

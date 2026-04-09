@@ -1,17 +1,45 @@
 import { api } from "@/convex/_generated/api";
 import { chatSession, ChatSession } from "@/configs/AIModel";
 import { useAction, useMutation } from "convex/react";
-import { Bold, Code, Highlighter, Italic, Save, Sparkles, Strikethrough, ToggleLeft, Underline } from "lucide-react";
+import { Bold, Code, Download, Highlighter, Italic, Save, Sparkles, Strikethrough, Underline } from "lucide-react";
 import { useParams } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
 import { useUser } from "@clerk/nextjs";
 
-function EditorExtension({ editor }) {
+function EditorExtension({ editor, fileName }) {
   const { fileId } = useParams();
   const SearchAI = useAction(api.myActions.search);
   const saveNotes = useMutation(api.notes.AddNotes);
   const {user}=useUser();
+
+  const onExport = () => {
+    const html = editor.getHTML();
+    if (!html || html === "<p></p>") {
+      toast.error("No notes to export.");
+      return;
+    }
+
+    const textContent = editor.getText({ blockSeparator: "\n\n" });
+    const safeName = (fileName || fileId || "notes")
+      .replace(/\.pdf$/i, "")
+      .replace(/[^a-zA-Z0-9-_ ]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+    const downloadName = `${safeName || "notes"}-notes.txt`;
+
+    const blob = new Blob([textContent], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = downloadName;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+    URL.revokeObjectURL(url);
+
+    toast.success("Notes exported successfully");
+  };
 
   const onAiClick = async () => {
     toast("AI is working on your query, please wait for a moment..");
@@ -122,6 +150,13 @@ function EditorExtension({ editor }) {
               className={"hover:text-red-800"}
             >
               <Save />
+            </button>
+            <button
+              onClick={() => onExport()}
+              className={"hover:text-green-700"}
+              title="Export notes"
+            >
+              <Download />
             </button>
           </div>
         </div>
