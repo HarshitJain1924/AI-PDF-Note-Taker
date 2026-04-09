@@ -63,10 +63,10 @@ function Dashboard() {
     <div className="space-y-6">
       <div className="flex items-end justify-between">
         <div>
-          <h2 className="font-semibold text-3xl text-slate-900">Workspace</h2>
-          <p className="text-sm text-slate-500 mt-1">Manage your PDFs and open any file in one click.</p>
+          <h2 className="font-semibold text-3xl text-slate-900 dark:text-slate-100">Workspace</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage your PDFs and open any file in one click.</p>
         </div>
-        <p className="text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1 rounded-full">
+        <p className="text-sm font-medium text-slate-600 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">
           {fileList?.length || 0} Files
         </p>
       </div>
@@ -76,21 +76,21 @@ function Dashboard() {
           ? fileList.map((file) => (
               <div
                 key={file.fileId}
-                className="group relative min-h-[190px] rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                className="group relative min-h-[190px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
               >
                 <Link
                   href={'/workspace/' + file.fileId}
-                  className="flex h-full flex-col items-center justify-center text-center cursor-pointer pb-11"
+                  className="flex h-full flex-col items-center justify-center text-center cursor-pointer transition-transform duration-200 group-hover:-translate-y-5"
                 >
                   <Image src={'/pdf.png'} alt="file" width={52} height={52} />
-                  <h2 className="mt-3 font-semibold text-lg text-slate-800 max-w-[200px] break-words leading-snug">
+                  <h2 className="mt-3 font-semibold text-lg text-slate-800 dark:text-slate-100 max-w-[200px] break-words leading-snug">
                     {file?.fileName}
                   </h2>
-                  <p className="text-xs text-slate-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     Open workspace
                   </p>
                 </Link>
-                <div className="absolute inset-x-3 bottom-3 flex gap-2 rounded-lg bg-white/90 backdrop-blur-sm p-1 border border-slate-200 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
+                <div className="absolute inset-x-3 bottom-3 flex gap-2 rounded-lg bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm p-1 border border-slate-200 dark:border-slate-700 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
                   <Button
                     variant="outline"
                     size="sm"

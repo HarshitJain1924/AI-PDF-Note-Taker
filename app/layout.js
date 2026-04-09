@@ -4,6 +4,7 @@ import { Outfit } from "next/font/google";
 import Provider from "./provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
+import ThemeToggle from "@/components/theme-toggle";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,10 +16,13 @@ const outfit = Outfit({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={outfit.className}>
-          <Provider>{children}</Provider>
-          <Toaster />
+          <Provider>
+            {children}
+            <ThemeToggle />
+            <Toaster />
+          </Provider>
         </body>
       </html>
     </ClerkProvider>

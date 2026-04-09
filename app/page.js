@@ -43,8 +43,8 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
-      <header className="px-4 lg:px-6 h-16 flex items-center">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-sky-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-black/5 dark:border-white/10">
         <Link className="flex items-center justify-center" href="#">
           <div className="flex gap-2 items-center">
             <div className="h-8 w-8 bg-primary rounded-full flex items-center justify-center text-white text-xs font-bold">AI</div>
@@ -52,13 +52,13 @@ export default function Home() {
           </div>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#features">
+          <Link className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:underline underline-offset-4" href="#features">
             Features
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#testimonials">
+          <Link className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:underline underline-offset-4" href="#testimonials">
             Testimonials
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#faq">
+          <Link className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:underline underline-offset-4" href="#faq">
             FAQ
           </Link>
           {isSignedIn ? (
@@ -77,7 +77,7 @@ export default function Home() {
               src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80"
               alt="Background pattern"
               fill
-              className="object-cover opacity-10"
+              className="object-cover opacity-10 dark:opacity-5"
               priority
             />
           </div>
@@ -85,13 +85,13 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center gap-8">
               <div className="flex-1 space-y-4 text-center lg:text-left">
                 <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+                  <h1 className="text-3xl font-bold tracking-tighter text-slate-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
                     Simplify <span className="text-primary">PDF</span>{" "}
                     <span className="text-blue-500">Note</span>-Taking
                     <br />
                     with AI-Powered Magic
                   </h1>
-                  <p className="mx-auto lg:mx-0 max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                  <p className="mx-auto lg:mx-0 max-w-[700px] text-slate-600 md:text-xl dark:text-slate-300">
                     Elevate your note-taking with AI PDF Note Taker. Seamlessly extract insights, generate summaries, and annotate PDFs with ease.
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export default function Home() {
                   alt="AI Document Analysis"
                   width={600}
                   height={400}
-                  className="rounded-lg shadow-2xl"
+                  className="rounded-lg shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
                   priority
                 />
               </div>
@@ -118,9 +118,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-white">
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-slate-950/60 transition-colors">
           <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold text-center mb-12">Powerful Features</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">Powerful Features</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="group hover:shadow-lg transition-shadow duration-200">
                 <CardHeader>
@@ -162,17 +162,17 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 relative overflow-hidden">
+        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32 bg-slate-100 dark:bg-slate-900 relative overflow-hidden transition-colors">
           <div className="absolute inset-0 z-0">
             <Image
               src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80"
               alt="Background pattern"
               fill
-              className="object-cover opacity-5"
+              className="object-cover opacity-5 dark:opacity-10"
             />
           </div>
           <div className="container px-4 md:px-6 relative z-10">
-            <h2 className="text-3xl font-bold text-center mb-12">What Our Users Say</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">What Our Users Say</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
@@ -206,7 +206,7 @@ export default function Home() {
                       />
                       <div>
                         <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-gray-500">{testimonial.role}</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">{testimonial.role}</p>
                       </div>
                     </div>
                     <p className="italic">{testimonial.quote}</p>
@@ -217,9 +217,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-white/80 dark:bg-slate-950/40 transition-colors">
           <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { q: "How accurate are the AI-generated summaries?", a: "Our AI model has been trained on a vast corpus of academic and professional documents, achieving over 95% accuracy in summary generation." },
@@ -250,7 +250,7 @@ export default function Home() {
           <div className="container px-4 md:px-6 text-center relative z-10">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your PDF Experience?</h2>
             <p className="mb-8 text-lg">Join thousands of satisfied users and start taking smarter notes with AI PDF Note Taker today.</p>
-            <Button onClick={handleGetStarted} className="bg-white text-primary rounded-full px-8 hover:bg-gray-100">
+            <Button onClick={handleGetStarted} className="bg-white text-primary rounded-full px-8 hover:bg-gray-100 dark:bg-slate-100 dark:text-slate-900">
               Get Started Now
             </Button>
           </div>

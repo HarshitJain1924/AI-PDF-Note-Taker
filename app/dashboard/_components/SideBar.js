@@ -39,7 +39,7 @@ function SideBar() {
   const recentFiles = filteredAndSortedFiles.slice(0, 5);
 
   return (
-    <div className="shadow-md h-screen p-7 flex flex-col">
+    <div className="shadow-md h-screen p-7 flex flex-col bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800">
       <div className="flex gap-2 items-center mb-6">
         <div className="h-10 w-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">AI</div>
         <div className="flex flex-col">
@@ -52,7 +52,7 @@ function SideBar() {
         <Button className="w-full">+ Upload PDF</Button>
       </UploadPdfDialog>
 
-      <div className="flex gap-2 p-3 mt-5 hover:bg-slate-300 rounded-lg cursor-pointer">
+      <div className="flex gap-2 p-3 mt-5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer text-slate-700 dark:text-slate-200">
         <Layout />
         <h2>Workspace</h2>
       </div>
@@ -64,7 +64,7 @@ function SideBar() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <select
-          className="w-full rounded-md border p-2 text-sm"
+          className="w-full rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 p-2 text-sm"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
@@ -75,27 +75,27 @@ function SideBar() {
       </div>
 
       <div className="mt-5">
-        <h3 className="text-sm font-semibold text-gray-600 mb-2">Recent PDFs</h3>
+        <h3 className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">Recent PDFs</h3>
         <div className="space-y-2 max-h-44 overflow-auto pr-1">
           {recentFiles.length > 0 ? (
             recentFiles.map((file) => (
               <Link
                 key={file.fileId}
                 href={`/workspace/${file.fileId}`}
-                className="block rounded-md border px-3 py-2 text-sm hover:bg-slate-100"
+                className="block rounded-md border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
                 title={file.fileName}
               >
                 <p className="truncate font-medium">{file.fileName}</p>
               </Link>
             ))
           ) : (
-            <p className="text-xs text-gray-500">No files match your search.</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">No files match your search.</p>
           )}
         </div>
       </div>
 
       <div className="mt-auto pt-6">
-        <p className="text-sm mt-2 font-medium">Total PDFs Uploaded: {fileList?.length || 0}</p>
+        <p className="text-sm mt-2 font-medium text-slate-700 dark:text-slate-300">Total PDFs Uploaded: {fileList?.length || 0}</p>
       </div>
     </div>
   );
